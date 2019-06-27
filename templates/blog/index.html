@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+{% if error_msg %}
+        <p>{{ error_msg }}</p>
+    {% endif %}
+    {% for post in post_list %}
+    <li><span class="blogpic"><a href="/"><img src="{{post.get_img_url}}"></a></span>
+        <h3 class="blogtitle"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+        <br>
+        <div class="bloginfo">
+            <p>{{ post.excerpt }}</p>
+        </div>
+        <div class="autor">
+            <span class="lm"><a href="#" title="tag" target="_blank" class="classname"></a>
+               {{ post.category.name }}
+            </span>
+            <span class="dtime">{{ post.created_time }}</span>
+            <span class="viewnum">浏览（{{ post.views }}）</span>
+            <span class="comments"><a href="{{ post.get_absolute_url }}">评论({{ post.comment_set.count }})</a></span>
+            <span class="readmore"><a href="{{ post.get_absolute_url }}">阅读原文</a></span></div>
+    </li>
+        {% empty %}
+        <div class="no-post">暂时还没有发布的文章！</div>
+    {% endfor %}
+    <div class="pagination-pos">
+        {% if is_paginated %}
+            <div class="pagination">
+                {% if first %}
+                    <a href="?page=1">1</a>
+                {% endif %}
+                {% if left %}
+                    {% if left_has_more %}
+                        <span>...</span>
+                    {% endif %}
+                    {% for i in left %}
+                        <a href="?page={{ i }}">{{ i }}</a>
+                    {% endfor %}
+                {% endif %}
+                <a class="current-page" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a>
+                {% if right %}
+                    {% for i in right %}
+                        <a href="?page={{ i }}">{{ i }}</a>
+                    {% endfor %}
+                    {% if right_has_more %}
+                        <span>...</span>
+                    {% endif %}
+                {% endif %}
+                {% if last %}
+                    <a href="?page={{ paginator.num_pages }}">{{ paginator.num_pages }}</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+   <!--<section class="github section">
+        <div class="section-inner">
+            <h3 class="heading">My GitHub</h3>
+            <br>
+
+            <div id="ghfeed" class="ghfeed">
+            </div>
+        </div>
+    </section>-->
+    <!--//section-->
+{% endblock main %}
