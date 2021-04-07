@@ -1,6 +1,6 @@
 alembic==1.0.8
 beautifulsoup4==4.7.1
-bottle==0.12.16
+bottle==0.12.19
 certifi==2019.3.9
 cftime==1.0.3.4
 chardet==3.0.4
