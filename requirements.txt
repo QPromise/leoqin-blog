@@ -7,7 +7,7 @@ chardet==3.0.4
 Click==7.0
 coards==1.0.5
 cycler==0.10.0
-Django==2.2
+Django==2.2.24
 docopt==0.6.2
 Flask==1.0.2
 flask-marshmallow==0.9.0
