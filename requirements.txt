@@ -14,7 +14,7 @@ flask-marshmallow==0.9.0
 Flask-Migrate==2.3.0
 Flask-SQLAlchemy==2.1
 future==0.17.1
-Glances==3.1.0
+Glances==3.2.1
 gunicorn==19.9.0
 idna==2.8
 itchat==1.2.32
